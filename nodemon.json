@@ -1,0 +1,6 @@
+{
+    "watch": ["src"],
+    "ext": "ts, sql",
+    "ignore": ["tests/**/*.ts"],
+    "exec": "node ./src/main/server.js"
+}
