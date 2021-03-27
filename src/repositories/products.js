@@ -10,10 +10,21 @@ module.exports = class ProductsRepository {
                 description,
                 supplier_id
             FROM
-                productss
+                products
         `;
         const products = await db.select(sql);
 
         return products;
+    }
+
+    async create(products) {
+        const sql = `
+            INSERT INTO 
+                products (description, supplier_id) 
+            VALUES 
+                (?,?);
+        `;
+
+        return db.persistMany(sql, products);
     }
 };
