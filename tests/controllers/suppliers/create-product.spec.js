@@ -1,58 +1,58 @@
 const faker = require('faker');
 
-const CreateProductController = require('../../../src/controllers/products/create-product');
+const CreateSupplierController = require('../../../src/controllers/suppliers/create-supplier');
 const ServerError = require('../../../src/utils/errors/server');
 const MissingParamError = require('../../../src/utils/errors/missing-param');
 const { badRequest, serverError, success } = require('../../../src/utils/http/http-helper');
 const ValidationSpy = require('../mocks/mock-validation');
-const ProductRepositorySpy = require('../mocks/mock-product-repository');
+const SupplierRepositorySpy = require('../mocks/mock-supplier-repository');
 
-const mockProduct = () => ({
-    description: 'valid_description',
-    supplier_id: 'valid_supplier_id',
+const mockSupplier = () => ({
+    name: 'valid_name',
+    country: 'valid_country',
 });
 
 const mockRequest = () => {
     return {
-        body: mockProduct(),
+        body: mockSupplier(),
     };
 };
 
 const mockArrayRequest = () => {
     return {
         body: [
-            mockProduct(),
-            mockProduct(),
+            mockSupplier(),
+            mockSupplier(),
         ]
     };
 };
 
 const makeSut = () => {
     const validationSpy = new ValidationSpy();
-    const productRepositorySpy = new ProductRepositorySpy();
-    const sut = new CreateProductController(productRepositorySpy, validationSpy);
+    const supplierRepositorySpy = new SupplierRepositorySpy();
+    const sut = new CreateSupplierController(supplierRepositorySpy, validationSpy);
     return {
         sut,
         validationSpy,
-        productRepositorySpy,
+        supplierRepositorySpy,
     };
 };
 
-describe('CreateProduct Controller', () => {
-    it('should return 500 if ProductRepository create() throws', async () => {
-        const { sut, productRepositorySpy } = makeSut();
-        jest.spyOn(productRepositorySpy, 'create').mockImplementationOnce(() => {
+describe('CreateSupplier Controller', () => {
+    it('should return 500 if SupplierRepository create() throws', async () => {
+        const { sut, supplierRepositorySpy } = makeSut();
+        jest.spyOn(supplierRepositorySpy, 'create').mockImplementationOnce(() => {
             throw new Error();
         });
         const httpResponse = await sut.handle(mockRequest());
         expect(httpResponse).toEqual(serverError(new ServerError(null)));
     });
 
-    it('should call ProductRepository create() with correct values', async () => {
-        const { sut, productRepositorySpy } = makeSut();
+    it('should call SupplierRepository create() with correct values', async () => {
+        const { sut, supplierRepositorySpy } = makeSut();
         const request = mockRequest();
         await sut.handle(request);
-        expect(productRepositorySpy.params).toEqual(sut.serializeProductsToDb(request.body));
+        expect(supplierRepositorySpy.params).toEqual(sut.serializeSuppliersToDb(request.body));
     });
 
     it('should call Validation with correct value', async () => {
@@ -79,12 +79,12 @@ describe('CreateProduct Controller', () => {
     it('should return 200 if valid array data is provided', async () => {
         const { sut } = makeSut();
         const httpResponse = await sut.handle(mockArrayRequest());
-        expect(httpResponse).toEqual(success({ createdProducts: mockArrayRequest.length }));
+        expect(httpResponse).toEqual(success({ createdSuppliers: mockArrayRequest.length }));
     });
 
     it('should return 200 if valid data is provided', async () => {
         const { sut } = makeSut();
         const httpResponse = await sut.handle(mockRequest());
-        expect(httpResponse).toEqual(success({ createdProducts: mockArrayRequest.length }));
+        expect(httpResponse).toEqual(success({ createdSuppliers: mockArrayRequest.length }));
     });
 });
