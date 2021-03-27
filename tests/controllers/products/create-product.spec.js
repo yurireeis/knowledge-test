@@ -3,7 +3,7 @@ const faker = require('faker');
 const CreateProductController = require('../../../src/controllers/products/create-product');
 const ServerError = require('../../../src/utils/errors/server');
 const MissingParamError = require('../../../src/utils/errors/missing-param');
-const { badRequest, serverError, success } = require('../../../src/utils/http/http-helper');
+const { badRequest, serverError, noContent } = require('../../../src/utils/http/http-helper');
 const ValidationSpy = require('../mocks/mock-validation');
 const ProductRepositorySpy = require('../mocks/mock-product-repository');
 
@@ -79,12 +79,12 @@ describe('CreateProduct Controller', () => {
     it('should return 200 if valid array data is provided', async () => {
         const { sut } = makeSut();
         const httpResponse = await sut.handle(mockArrayRequest());
-        expect(httpResponse).toEqual(success({ createdProducts: mockArrayRequest.length }));
+        expect(httpResponse).toEqual(noContent());
     });
 
     it('should return 200 if valid data is provided', async () => {
         const { sut } = makeSut();
         const httpResponse = await sut.handle(mockRequest());
-        expect(httpResponse).toEqual(success({ createdProducts: mockArrayRequest.length }));
+        expect(httpResponse).toEqual(noContent());
     });
 });

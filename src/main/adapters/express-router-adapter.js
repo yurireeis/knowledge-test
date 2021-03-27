@@ -8,7 +8,7 @@ const adaptRoute = (controller) => {
 
         const httpResponse = await controller.handle(request);
 
-        if (httpResponse.body.success === 'true') {
+        if (httpResponse.statusCode >= 200 || httpResponse.statusCode <= 299) {
             res
                 .status(httpResponse.statusCode)
                 .json(httpResponse.body);
@@ -16,7 +16,6 @@ const adaptRoute = (controller) => {
             res
                 .status(httpResponse.statusCode)
                 .json({
-                    success: httpResponse.body.success,
                     errors: httpResponse.body.errors.map(error => error.message),
                 });
         }

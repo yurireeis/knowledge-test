@@ -1,4 +1,4 @@
-const { serverError, success, badRequest } = require('../../utils/http/http-helper');
+const { serverError, noContent, badRequest } = require('../../utils/http/http-helper');
 
 module.exports = class CreateProductController {
     constructor(repository, validation) {
@@ -14,8 +14,8 @@ module.exports = class CreateProductController {
             }
 
             const serializedSuppliers = this.serializeSuppliersToDb(request.body);
-            const suppliers = await this.repository.create(serializedSuppliers);
-            return success({ createdSuppliers: suppliers });
+            await this.repository.create(serializedSuppliers);
+            return noContent();
         } catch (error) {
             return serverError(error);
         }
