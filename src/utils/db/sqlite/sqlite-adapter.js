@@ -44,6 +44,14 @@ module.exports = class SQLiteAdapter {
         return result;
     }
 
+    async persistMany(sql, batchData) {
+        for (const batch of batchData) {
+            await this.client.run(sql, batch);
+        }
+
+        return batchData.length;
+    }
+
     static getInstance(options) {
         return this._instance || (this._instance = new this(options));
     }
