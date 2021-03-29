@@ -21,12 +21,18 @@ const success = (data) => ({
     body: data
 });
 
+const created = (data) => ({
+    statusCode: 201,
+    body: data
+});
+
 const noContent = () => ({
     statusCode: 204,
     body: null
 });
 
 module.exports = {
+    created,
     badRequest,
     serverError,
     success,
