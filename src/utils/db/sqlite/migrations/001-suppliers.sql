@@ -11,7 +11,9 @@ CREATE TABLE suppliers (
 INSERT INTO 
     suppliers (name, country) 
 VALUES 
-    ('VAEES', 'brasil');
+    ('VAEES', 'brasil'),
+    ('DELL', 'brasil'),
+    ('HAVAN', 'brasil');
 --------------------------------------------------------------------------------
 -- Down
 --------------------------------------------------------------------------------

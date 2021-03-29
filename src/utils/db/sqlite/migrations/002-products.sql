@@ -13,7 +13,12 @@ CREATE TABLE products (
 INSERT INTO 
     products (description, supplier_id) 
 VALUES 
-    ('parafuso', 1);
+    ('parafuso', 1),
+    ('notebook', 2),
+    ('mouse', 2),
+    ('blusa', 3),
+    ('bermuda', 3),
+    ('liquidificador', 3);
 --------------------------------------------------------------------------------
 -- Down
 --------------------------------------------------------------------------------
