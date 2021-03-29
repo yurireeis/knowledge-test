@@ -62,6 +62,7 @@ Pedidos: **src/utils/db/sqli/migrations/003-purchase-orders.sql**
 
 ### Diferenciais
 - Testar unitariamente todas as classes relacionadas a funcionalidade de pedidos;
+- Manter o padrão de código atual do projeto;
 - Propor melhorias possíveis no código fonte.
 
 > ## Critérios de Avaliação
