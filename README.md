@@ -4,11 +4,11 @@ Bem vindo(a)!
 
 Aqui você terá todas as informações para realizar seu desafio.
 
-O tempo sugerido para conclusão do desafio é de `x` dias, porém, o mesmo pode estender-se caso necessário, nosso foco é a qualidade da sua implementação!
+O tempo sugerido para conclusão do desafio é de `7` dias, porém, o mesmo pode estender-se caso necessário, nosso foco é a qualidade da sua implementação!
 
 Você deverá criar um fork deste projeto e realizar o desenvolvimento do desafio.
 
-Quando sua implementação  estiver concluída você deverá encaminhar para o e-mail `nosso-emailzinho` o link do seu repositório do Github para que nosso time possa analisar seu código e encaminhar um feedback.
+Quando sua implementação  estiver concluída você deverá encaminhar para o e-mail da pessoa responsável pelo seu processo seletivo o link do seu repositório do Github para que nosso time possa analisar seu código e encaminhar um feedback.
 
 Bom desafio!
 
@@ -18,12 +18,26 @@ Bom desafio!
 
 > ## Desafio
 
-Você deverá construir as rotas para **criação**, **listagem** e **exclusão** de pedido de compras. 
+Criamos um banco de dados SQLite super simples com três tabelas: fornecedor, produto e pedido de compras. 
+
+- Fornecedor: É o responsável pelo fornececimento dos produtos;
+- Produto: Materiais vendidos pelos fornecedores;
+- Pedido de Compra: Documento que registra a venda de um produto por um fornecedor.
+
+O objetivo do desafio é construir três APIs (rotas) para **criação**, **listagem** e **exclusão** dos pedido de compras. A linguagem Javascript usando o runtime NodeJS deve ser utilizada. 
+
+O esqueleto do projeto e duas rotas de exemplo já estão prontas (produtos e fornecedor). Isso lhe ajudará a entender a estrutura do projeto e é um grande acelerador para a realização das atividades.
 
 > ## Requisitos
 
-Você pode encontrar as informações da tabela de pedidos em **src/utils/db/sqli/migrations/003-purchase-orders.sql**
+Antes de iniciar, entenda a relação entre as tabelas. Isso é fundamental para que consiga realizar o exercício com sucesso.
+Você pode encontrar as informações das tabelas nos caminhos abaixo:
 
+Fornecedores: **src/utils/db/sqli/migrations/001-suppliers.sql**
+Produtos: **src/utils/db/sqli/migrations/002-products.sql**
+Pedidos: **src/utils/db/sqli/migrations/003-purchase-orders.sql**
+
+## Atividades
 ### Listagem de Pedidos
 
 - Você deverá expor o endpoint **/orders** que receberá uma requisição do tipo **GET**;
