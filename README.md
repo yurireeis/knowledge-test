@@ -33,9 +33,9 @@ O esqueleto do projeto e duas rotas de exemplo já estão prontas (produtos e fo
 Antes de iniciar, entenda a relação entre as tabelas. Isso é fundamental para que consiga realizar o exercício com sucesso.
 Você pode encontrar as informações das tabelas nos caminhos abaixo:
 
-Fornecedores: **src/utils/db/sqli/migrations/001-suppliers.sql**
-Produtos: **src/utils/db/sqli/migrations/002-products.sql**
-Pedidos: **src/utils/db/sqli/migrations/003-purchase-orders.sql**
+- Fornecedores: **src/utils/db/sqli/migrations/001-suppliers.sql**
+- Produtos: **src/utils/db/sqli/migrations/002-products.sql**
+- Pedidos: **src/utils/db/sqli/migrations/003-purchase-orders.sql**
 
 ## Atividades
 ### Listagem de Pedidos
