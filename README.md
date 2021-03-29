@@ -37,7 +37,7 @@ Você pode encontrar as informações das tabelas nos caminhos abaixo:
 - Produtos: **src/utils/db/sqli/migrations/002-products.sql**
 - Pedidos: **src/utils/db/sqli/migrations/003-purchase-orders.sql**
 
-## Atividades
+> ## Atividades
 ### Listagem de Pedidos
 
 - Você deverá expor o endpoint **/orders** que receberá uma requisição do tipo **GET**;
